@@ -150,9 +150,11 @@ func start() {
 
 	go func() {
 		if err := cmd.Start(); err != nil {
+			_ = os.RemoveAll(fmt.Sprintf("%s", "./media"))
 			fmt.Println(err)
 		}
 		if err := cmd.Wait(); err != nil {
+			_ = os.RemoveAll(fmt.Sprintf("%s", "./media"))
 			panic(err)
 		}
 	} ()
