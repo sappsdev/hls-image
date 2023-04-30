@@ -12,6 +12,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
 FROM alpine
 WORKDIR /app
 COPY --from=server-builder /builder/server .
+COPY --from=server-builder /builder/fonts ./fonts/.
 RUN apk add ffmpeg
 
 EXPOSE 4000
